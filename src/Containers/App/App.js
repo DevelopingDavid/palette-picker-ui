@@ -18,9 +18,12 @@ class App extends Component {
 
   generateColors = () => {
     let currentPalette = [];
+    let currentColor = {
+      locked: false
+    }
     for (var i = 0; i < 5; i++) {
       let color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase()
-      currentPalette.push(color)
+      currentPalette.push({color, ...currentColor})
     }
     this.props.addPalette(currentPalette)
   }
