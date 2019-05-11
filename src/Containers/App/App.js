@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import HeaderBar from '../../HeaderBar/HeaderBar';
 import CardContainer from '../../Components/CardContainer/CardContainer';
+import { connect } from 'react-redux'
+import { addPalette } from '../../Actions/'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      projects: []
+      currentPalette: []
     }
   } 
 
@@ -15,12 +17,12 @@ class App extends Component {
   }
 
   generateColors = () => {
-    let projects = [];
+    let currentPalette = [];
     for (var i = 0; i < 5; i++) {
       let color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase()
-      projects.push(color)
+      currentPalette.push(color)
     }
-    this.setState({ projects }) 
+    this.props.addPalette(currentPalette)
   }
 
   render () {
@@ -35,4 +37,8 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapDispatchToProps = (dispatch) => ({
+  addPalette: (palette) => dispatch(addPalette(palette))
+})
+
+export default connect(null, mapDispatchToProps)(App);
