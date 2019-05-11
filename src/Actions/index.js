@@ -3,3 +3,7 @@ export const addPalette = (palette) => ({
   palette
 })
 
+export const toggleLocked = (color) => ({
+  type: 'TOGGLE_LOCKED',
+  color
+})

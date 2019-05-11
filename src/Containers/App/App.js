@@ -23,7 +23,7 @@ class App extends Component {
     }
     for (var i = 0; i < 5; i++) {
       let color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase()
-      currentPalette.push({color, ...currentColor})
+      currentPalette.push({color: color, ...currentColor})
     }
     this.props.addPalette(currentPalette)
   }
