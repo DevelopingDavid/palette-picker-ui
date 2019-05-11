@@ -134,7 +134,7 @@ class HeaderBar extends React.Component {
           <List>
             {['Projects'].map((text) => (
               <ListItem button key={text}>
-                <ListItemIcon>{<i class="material-icons">palette</i>}</ListItemIcon>
+                <ListItemIcon>{<i className="material-icons">palette</i>}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}

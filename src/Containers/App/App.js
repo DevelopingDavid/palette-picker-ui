@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import HeaderBar from '../HeaderBar/HeaderBar';
+import HeaderBar from '../../HeaderBar/HeaderBar';
+import CardContainer from '../../Components/CardContainer/CardContainer';
 
 class App extends Component {
   render () {
     return (
       <div className="app">
-        <HeaderBar/>
+        <HeaderBar />
+        <CardContainer />
       </div>
     );
   }
