@@ -10,29 +10,39 @@ class Card extends Component {
     }
   }
 
+  toggleLock = () => {
+    const hex = this.props.colorObject.hex
+    // console.log('hex', hex)
+    this.props.toggleLockInStore(hex)
+    this.toggleLockInState()
+  }
+
   toggleLockInState = () => {
-    // console.log(this.props)
-    this.props.toggleLockInStore(this.props.color.color)
     this.setState({
       locked: !this.state.locked
     })
   }
   
   render() {
+    const { hex } = this.props.colorObject
     
     return (
-      <div className='card' style={{backgroundColor: this.props.color.color}} onClick={this.toggleLockInState}>
+      <div className='card' 
+        // onClick={(hex) => this.props.toggleLockInStore(hex)}
+        onClick={this.toggleLock} 
+        style={{backgroundColor: hex}} 
+        >
       {
         this.state.locked ? <i className="material-icons lock-closed">lock</i> : <i className="material-icons lock-open">lock_open</i>
       } 
-        <p>{this.props.color.color}</p>
+        <p>{hex}</p>
       </div>
     )
   }
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  toggleLockInStore: (color) => dispatch(toggleLocked(color))
+  toggleLockInStore: (hex) => dispatch(toggleLocked(hex))
 })
 
 export default connect(null, mapDispatchToProps)(Card);
