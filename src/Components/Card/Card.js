@@ -12,7 +12,6 @@ class Card extends Component {
 
   toggleLock = () => {
     const hex = this.props.colorObject.hex
-    // console.log('hex', hex)
     this.props.toggleLockInStore(hex)
     this.toggleLockInState()
   }
@@ -28,7 +27,6 @@ class Card extends Component {
     
     return (
       <div className='card' 
-        // onClick={(hex) => this.props.toggleLockInStore(hex)}
         onClick={this.toggleLock} 
         style={{backgroundColor: hex}} 
         >

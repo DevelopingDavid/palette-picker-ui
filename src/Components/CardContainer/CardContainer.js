@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 class CardContainer extends Component {
 
  render() {
-  console.log('props', this.props)
   const { currentPalette } = this.props
   const makeCards = currentPalette.map(color => {
       return <Card colorObject={color} />
