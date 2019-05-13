@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Card from '../Card/Card';
+import Button from '@material-ui/core/Button'
+import { connect } from 'react-redux'
 
-const CardContainer = () => {
-  const samplePalette = [
-    {name: 'color_one', locked: false, color: 1 },
-    {name: 'color_two', locked: false, color: 2},
-    {name: 'color_three', locked: false, color: 3 },
-    {name: 'color_four', locked: false, color: 4 },
-    {name: 'color_five', locked: false, color: 5 },
-  ];
+class CardContainer extends Component {
 
-  return (
-    <div className='card-container'>
-      {samplePalette.map(color => {
-        return <Card color={color}/>
-      })}
-    </div>
-  )
+ render() {
+  const { currentPalette } = this.props
+  const makeCards = currentPalette.map(color => {
+      return <Card colorObject={color} />
+  })
+
+   return (
+     <div className='card-container'>
+       { makeCards }
+       <Button className="generate-colors-btn" onClick={this.props.generateColors}>Generate New Colors</Button>
+       <Button className="save-palette-btn">Save Palette</Button>
+     </div>
+   )
+ }
 }
 
-export default CardContainer;
+export const mapStateToProps = state => ({
+  currentPalette: state.currentPalette
+})
+
+export default connect(mapStateToProps)(CardContainer);
