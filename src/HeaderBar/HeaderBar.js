@@ -13,9 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import Project from '../Components/Project/Project';
 
 const drawerWidth = 240;
 
@@ -79,7 +77,14 @@ const styles = theme => ({
 class HeaderBar extends React.Component {
   state = {
     open: false,
+    projects: []
   };
+
+  async componentDidMount() {
+    const response = await fetch('http://localhost:3001/api/v1/projects');
+    const data = await response.json();
+    this.setState({projects: data});
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -132,11 +137,8 @@ class HeaderBar extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Projects'].map((text) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{<i className="material-icons">palette</i>}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
+            {this.state.projects.map((project) => (
+              <Project key={project.id} project={project}/>
             ))}
           </List>
           <Divider />

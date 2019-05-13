@@ -8,7 +8,7 @@ class CardContainer extends Component {
  render() {
   const { currentPalette } = this.props
   const makeCards = currentPalette.map(color => {
-      return <Card colorObject={color} />
+      return <Card key={color.hex} colorObject={color} />
   })
 
    return (
