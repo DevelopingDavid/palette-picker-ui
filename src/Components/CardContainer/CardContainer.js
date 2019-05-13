@@ -14,7 +14,7 @@ class CardContainer extends Component {
    return (
      <div className='card-container'>
        { makeCards }
-       <Button className="generate-colors-btn" onClick={this.props.generateColors}>Generate New Colors</Button>
+       <Button className="generate-colors-btn" onClick={this.props.checkLockedColors}>Generate New Colors</Button>
        <Button className="save-palette-btn">Save Palette</Button>
      </div>
    )
