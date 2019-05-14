@@ -18,6 +18,7 @@ const makeNewProjectThunk = (project) => {
       const project = await response.json()
       dispatch(isLoading(false))
       dispatch(makeNewProject(project))
+      return project
     } catch (error) {
       dispatch(hasError(error.message))
     }

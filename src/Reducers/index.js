@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   currentPalette: currentPaletteReducer,
   isLoading: isLoadingReducer,
   hasError: errorReducer,
-  projects: projectReducer
+  projects: projectReducer,
 })
 
 export default rootReducer

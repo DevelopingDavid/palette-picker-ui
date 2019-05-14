@@ -10,6 +10,7 @@ const currentPaletteReducer = (state = [], action) => {
           return color
         }
       })
+      
     default:
       return state
   }
