@@ -11,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button'
+import shortid from 'shortid'
 
 const styles = theme => ({
   root: {
@@ -61,7 +62,7 @@ class Project extends Component {
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
           {this.state.palettes.map((palette) => (
-            <List key={palette.created_at} component="div" disablePadding>
+            <List key={shortid.generate()} component="div" disablePadding>
               <Divider />
               <ListItemIcon>{<i className="material-icons palette-icon">style</i>}</ListItemIcon>
               <ListItem className={classes.nested}>

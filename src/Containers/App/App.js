@@ -3,6 +3,7 @@ import HeaderBar from '../../HeaderBar/HeaderBar';
 import CardContainer from '../../Components/CardContainer/CardContainer';
 import { connect } from 'react-redux'
 import { addPalette } from '../../Actions/'
+import PropTypes from 'prop-types'
 
 class App extends Component {
   constructor() {
@@ -59,6 +60,11 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  currentPalette: PropTypes.array.isRequired,
+  addPalette: PropTypes.func.isRequired
+}
+
 export const mapStateToProps = (state) => ({
   currentPalette: state.currentPalette
 })
@@ -66,5 +72,6 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   addPalette: (palette) => dispatch(addPalette(palette))
 })
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
