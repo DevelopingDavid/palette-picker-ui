@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
 import shortid from 'shortid';
 import Palette from '../Palette/Palette';
+import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk';
+import { connect } from 'react-redux';
 
 class Project extends Component {
   constructor(props) {
@@ -30,6 +32,14 @@ class Project extends Component {
     const response = await fetch(`http://localhost:3001/api/v1/projects/${id}/palettes`);
     const data = await response.json();
     this.setState({ palettes: data });
+  }
+
+  deleteProject = async () => {
+    const { project } = this.props;
+    const id = project.id;
+    const options = {method: 'DELETE'}
+    await fetch(`http://localhost:3001/api/v1/projects/${id}`, options);
+    this.props.fetchProjectsThunk();
   }
 
   render() {
@@ -57,6 +67,8 @@ Project.propTypes = {
   project: PropTypes.object.isRequired,
 };
 
-export default Project;
+export const mapDispatchToProps = (dispatch) => ({
+  fetchProjectsThunk: () => dispatch(fetchProjectsThunk())
+})
 
-
+export default connect(null, mapDispatchToProps)(Project);
