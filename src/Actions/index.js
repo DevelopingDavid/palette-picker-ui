@@ -22,3 +22,8 @@ export const hasError = (message) => ({
   type: "HAS_ERROR",
   message
 })
+
+export const addProjects = (projects) => ({
+  type: 'ADD_PROJECTS',
+  projects
+})

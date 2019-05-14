@@ -14,6 +14,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Project from '../Components/Project/Project';
+import { connect } from 'react-redux'
+import fetchProjectsThunk from '../Thunks/fetchProjectsThunk'
 
 const drawerWidth = 240;
 
@@ -76,14 +78,11 @@ const styles = theme => ({
 
 class HeaderBar extends React.Component {
   state = {
-    open: false,
-    projects: []
+    open: false
   };
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:3001/api/v1/projects');
-    const data = await response.json();
-    this.setState({ projects: data });
+    this.props.fetchProjects()
   }
 
   handleDrawerOpen = () => {
@@ -137,7 +136,7 @@ class HeaderBar extends React.Component {
           </div>
           <Divider />
           <List>
-            {this.state.projects.map((project) => (
+            {this.props.projects.map((project) => (
               <Project key={project.id} project={project} />
             ))}
           </List>
@@ -159,4 +158,12 @@ HeaderBar.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(HeaderBar);
+export const mapDispatchToProps = (dispatch) => ({
+  fetchProjects: () => dispatch(fetchProjectsThunk())
+})
+
+export const mapStateToProps = (state) => ({
+  projects: state.projects
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(HeaderBar));

@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import makeNewProjectThunk from '../../Thunks/makeNewProjectThunk'
 import makeNewPaletteThunk from '../../Thunks/makeNewPaletteThunk'
+import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk'
 import shortid from 'shortid'
 
 const styles = theme => ({
@@ -85,7 +86,10 @@ export class CardContainer extends Component {
       color_five: currentPalette[4].hex
     }
     this.props.makeNewPaletteThunk(paletteWithId)
+    this.props.fetchProjectsThunk()
   }
+
+
 
   render() {
     const { classes } = this.props;
@@ -136,7 +140,8 @@ CardContainer.propTypes = {
 
 export const mapDispatchToProps = (dispatch) => ({
   makeNewProjectThunk: (project) => dispatch(makeNewProjectThunk(project)),
-  makeNewPaletteThunk: (palette) => dispatch(makeNewPaletteThunk(palette))
+  makeNewPaletteThunk: (palette) => dispatch(makeNewPaletteThunk(palette)),
+  fetchProjectsThunk: () => dispatch(fetchProjectsThunk())
 })
 
 export const mapStateToProps = state => ({
