@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
@@ -41,11 +42,13 @@ class ColorBox extends Component {
         onClick={this.toggleLock}  
         >
         <CardContent style={{backgroundColor: hex, height: '12vw'}} className='color-container'>
+        </CardContent>
         {
           this.state.locked ? <i className="material-icons lock-closed">lock</i> : <i className="material-icons lock-open">lock_open</i>
         } 
-        </CardContent>
-        <p>{hex}</p>
+        <Typography className='color-code' variant="h6" color="inherit" noWrap>
+          { hex }
+        </Typography>
       </Card>
     )
   }
