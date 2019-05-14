@@ -25,16 +25,13 @@ class ColorBox extends Component {
   toggleLock = () => {
     const hex = this.props.colorObject.hex
     this.props.toggleLockInStore(hex)
-    this.toggleLockInState()
   }
 
-  toggleLockInState = () => {
-    this.setState({
-      locked: !this.state.locked
-    })
-  }
   
   render() {
+    const foundColor = this.props.currentPalette.find(colorObj => {
+      return colorObj.hex === this.props.colorObject.hex
+    })
     const { hex } = this.props.colorObject
     const { classes } = this.props;
     return (
@@ -44,7 +41,7 @@ class ColorBox extends Component {
         <CardContent style={{backgroundColor: hex, height: '12vw'}} className='color-container'>
         </CardContent>
         {
-          this.state.locked ? <i className="material-icons lock-closed">lock</i> : <i className="material-icons lock-open">lock_open</i>
+          foundColor.locked ? <i className="material-icons lock-closed">lock</i> : <i className="material-icons lock-open">lock_open</i>
         } 
         <Typography className='color-code' variant="h6" color="inherit" noWrap>
           { hex }
@@ -62,4 +59,8 @@ export const mapDispatchToProps = (dispatch) => ({
   toggleLockInStore: (hex) => dispatch(toggleLocked(hex))
 });
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(ColorBox));
+export const mapStateToProps = (state) => ({
+  currentPalette: state.currentPalette
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ColorBox));

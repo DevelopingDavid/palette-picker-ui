@@ -109,6 +109,13 @@ export class CardContainer extends Component {
   }
 }
 
+CardContainer.propTypes = {
+  makeNewProjectThunk: PropTypes.func.isRequired,
+  currentPalette: PropTypes.array.isRequired,
+  checkLockedColors: PropTypes.func.isRequired,
+  projects: PropTypes.array
+}
+
 export const mapDispatchToProps = (dispatch) => ({
   makeNewProjectThunk: (project) => dispatch(makeNewProjectThunk(project))
 })
