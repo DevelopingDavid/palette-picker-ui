@@ -91,6 +91,7 @@ class Project extends Component {
             </List>
           ))}
         </Collapse>
+        <Divider />
       </div>
     )
   }

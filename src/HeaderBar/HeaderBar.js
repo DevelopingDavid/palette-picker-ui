@@ -83,7 +83,7 @@ class HeaderBar extends React.Component {
   async componentDidMount() {
     const response = await fetch('http://localhost:3001/api/v1/projects');
     const data = await response.json();
-    this.setState({projects: data});
+    this.setState({ projects: data });
   }
 
   handleDrawerOpen = () => {
@@ -138,10 +138,9 @@ class HeaderBar extends React.Component {
           <Divider />
           <List>
             {this.state.projects.map((project) => (
-              <Project key={project.id} project={project}/>
+              <Project key={project.id} project={project} />
             ))}
           </List>
-          <Divider />
         </Drawer>
         <main
           className={classNames(classes.content, {
