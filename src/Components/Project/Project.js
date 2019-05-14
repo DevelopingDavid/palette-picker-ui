@@ -58,7 +58,7 @@ class Project extends Component {
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             {this.state.palettes.map((palette) => (
-              <List component="div" disablePadding>
+              <List key={palette.created_at} component="div" disablePadding>
                 <Divider />
                   <ListItemIcon>{<i className="material-icons">style</i>}</ListItemIcon>
                   <ListItem className={classes.nested}>
