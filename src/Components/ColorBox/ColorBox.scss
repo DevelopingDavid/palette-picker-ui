@@ -2,11 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100px;
 }
 
 .card {
   margin: 5px;
-  p {
+  .color-code {
     text-align: center;
   }
+}
+
+.lock-open,
+.lock-closed {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
 }

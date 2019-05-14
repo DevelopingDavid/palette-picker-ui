@@ -9,6 +9,7 @@ import List from '@material-ui/core/List';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   root: {
@@ -57,28 +58,33 @@ class Project extends Component {
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            {this.state.palettes.map((palette) => (
-              <List key={palette.created_at} component="div" disablePadding>
-                <Divider />
-                  <ListItemIcon>{<i className="material-icons">style</i>}</ListItemIcon>
-                  <ListItem className={classes.nested}>
-                    <ListItemText primary={palette.color_one} style={{backgroundColor: palette.color_one}} />
-                  </ListItem>
-                  <ListItem className={classes.nested}>
-                    <ListItemText primary={palette.color_two} style={{backgroundColor: palette.color_two}} />
-                  </ListItem>
-                  <ListItem className={classes.nested}>
-                    <ListItemText primary={palette.color_three} style={{backgroundColor: palette.color_three}} />
-                  </ListItem>
-                  <ListItem className={classes.nested}>
-                    <ListItemText primary={palette.color_four} style={{backgroundColor: palette.color_four}}/>
-                  </ListItem>
-                  <ListItem className={classes.nested}>
-                    <ListItemText primary={palette.color_five} style={{backgroundColor: palette.color_five}}/>
-                  </ListItem>
-                <Divider />
-              </List>
-            ))}
+          {this.state.palettes.map((palette) => (
+            <List key={palette.created_at} component="div" disablePadding>
+              <Divider />
+              <ListItemIcon>{<i className="material-icons palette-icon">style</i>}</ListItemIcon>
+              <ListItem className={classes.nested}>
+                <Avatar style={{ backgroundColor: palette.color_one }}></Avatar>
+                <ListItemText primary={palette.color_one} />
+              </ListItem>
+              <ListItem className={classes.nested}>
+                <Avatar style={{ backgroundColor: palette.color_two }}></Avatar>
+                <ListItemText primary={palette.color_two} />
+              </ListItem>
+              <ListItem className={classes.nested}>
+                <Avatar style={{ backgroundColor: palette.color_three }}></Avatar>
+                <ListItemText primary={palette.color_three} />
+              </ListItem>
+              <ListItem className={classes.nested}>
+                <Avatar style={{ backgroundColor: palette.color_four }}></Avatar>
+                <ListItemText primary={palette.color_four} />
+              </ListItem>
+              <ListItem className={classes.nested}>
+                <Avatar style={{ backgroundColor: palette.color_five }}></Avatar>
+                <ListItemText primary={palette.color_five} />
+              </ListItem>
+              <Divider />
+            </List>
+          ))}
         </Collapse>
       </div>
     )
