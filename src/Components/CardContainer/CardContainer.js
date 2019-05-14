@@ -10,6 +10,14 @@ import makeNewProjectThunk from '../../Thunks/makeNewProjectThunk'
 import shortid from 'shortid'
 
 const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: 'none',
+  },
   button: {
     margin: theme.spacing.unit,
   },
@@ -25,6 +33,17 @@ export class CardContainer extends Component {
     projectName: ''
   };
 
+  getModalStyle = () => {
+    const top = 50
+    const left = 50
+   
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+   }
+
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -32,16 +51,7 @@ export class CardContainer extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-  // styles = theme => ({
-  //   paper: {
-  //     position: 'absolute',
-  //     width: theme.spacing.unit * 50,
-  //     backgroundColor: theme.palette.background.paper,
-  //     boxShadow: theme.shadows[5],
-  //     padding: theme.spacing.unit * 4,
-  //     outline: 'none',
-  //   },
-  // });
+
 
   handleChange = (e) => {
     const { name, value } = e.target
@@ -51,7 +61,6 @@ export class CardContainer extends Component {
   }
 
   createNewProject = async () => {
-    console.log('hit!!!')
     const newProject = {
       name: this.state.projectName,
       palettes: this.props.currentPalette
@@ -82,7 +91,7 @@ export class CardContainer extends Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-          <div className='modal'>
+          <div style={this.getModalStyle()} className={classes.paper}>
             <Typography variant="h6" id="modal-title">
               Save New Project
           </Typography>
@@ -100,8 +109,12 @@ export class CardContainer extends Component {
   }
 }
 
+export const mapDispatchToProps = (dispatch) => ({
+  makeNewProjectThunk: (project) => dispatch(makeNewProjectThunk(project))
+})
+
 export const mapStateToProps = state => ({
   currentPalette: state.currentPalette
 })
 
-export default connect(mapStateToProps)(withStyles(styles)(CardContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CardContainer));

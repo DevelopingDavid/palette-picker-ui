@@ -1,7 +1,7 @@
 const projectReducer = (state=[], action) => {
   switch (action.type) {
     case 'MAKE_NEW_PROJECT':
-      return [action.project, ...state]
+      return [...state, action.project]
     default:
       return state
   }
