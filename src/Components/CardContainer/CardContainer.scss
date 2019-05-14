@@ -8,3 +8,15 @@
   flex-direction: column;
   align-items: center;
 }
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  // position: 'absolute';
+  //     width: theme.spacing.unit * 50,
+  //     background-color: theme.palette.background.paper,
+  //     boxShadow: theme.shadows[5],
+  //     padding: theme.spacing.unit * 4,
+  //     outline: 'none',
+}
