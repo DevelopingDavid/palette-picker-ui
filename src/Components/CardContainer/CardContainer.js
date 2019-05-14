@@ -7,6 +7,8 @@ import Modal from '@material-ui/core/Modal'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import makeNewProjectThunk from '../../Thunks/makeNewProjectThunk'
+import makeNewPaletteThunk from '../../Thunks/makeNewPaletteThunk'
+import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk'
 import shortid from 'shortid'
 
 const styles = theme => ({
@@ -62,11 +64,31 @@ export class CardContainer extends Component {
 
   createNewProject = async () => {
     const newProject = {
-      name: this.state.projectName,
-      palettes: this.props.currentPalette
+      project_name: this.state.projectName,
     }
-    await makeNewProjectThunk(newProject)
+    const id = await this.props.makeNewProjectThunk(newProject)
+    this.postPalette(id)  
   }
+
+  postPalette = async (id) => {
+    const response = await fetch('http://localhost:3001/api/v1/projects')
+    const projects = await response.json()
+    const foundId = await projects.find( (project) => {
+      return project.id === id.id
+    })
+    const { currentPalette } = this.props
+    const paletteWithId = {
+      project_id: foundId.id, 
+      color_one: currentPalette[0].hex,
+      color_two: currentPalette[1].hex,
+      color_three: currentPalette[2].hex,
+      color_four: currentPalette[3].hex,
+      color_five: currentPalette[4].hex
+    }
+    this.props.makeNewPaletteThunk(paletteWithId)
+    this.props.fetchProjectsThunk()
+  }
+
 
 
   render() {
@@ -100,7 +122,7 @@ export class CardContainer extends Component {
           Save New Project
           </Button>
             <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              Please input the name of the Project you want to save.
           </Typography>
           </div>
         </Modal>
@@ -117,7 +139,9 @@ CardContainer.propTypes = {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  makeNewProjectThunk: (project) => dispatch(makeNewProjectThunk(project))
+  makeNewProjectThunk: (project) => dispatch(makeNewProjectThunk(project)),
+  makeNewPaletteThunk: (palette) => dispatch(makeNewPaletteThunk(palette)),
+  fetchProjectsThunk: () => dispatch(fetchProjectsThunk())
 })
 
 export const mapStateToProps = state => ({

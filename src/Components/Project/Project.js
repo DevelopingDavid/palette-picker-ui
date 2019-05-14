@@ -35,11 +35,8 @@ class Project extends Component {
 
   toggleDrawer = () => {
     this.setState(state => ({ open: !state.open }));
-  };
-
-  componentDidMount() {
     this.fetchPalette();
-  }
+  };
 
   fetchPalette = async () => {
     const { project } = this.props;
