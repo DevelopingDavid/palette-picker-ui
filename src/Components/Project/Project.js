@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
   root: {
@@ -82,6 +83,9 @@ class Project extends Component {
                 <Avatar style={{ backgroundColor: palette.color_five }}></Avatar>
                 <ListItemText primary={palette.color_five} />
               </ListItem>
+              <div className='delete-container'>
+                <Button variant="contained">Delete palette</Button>
+              </div>
               <Divider />
             </List>
           ))}
