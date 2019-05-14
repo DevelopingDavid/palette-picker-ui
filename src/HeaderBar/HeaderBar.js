@@ -14,8 +14,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Project from '../Components/Project/Project';
-import { connect } from 'react-redux'
-import fetchProjectsThunk from '../Thunks/fetchProjectsThunk'
+import { connect } from 'react-redux';
+import fetchProjectsThunk from '../Thunks/fetchProjectsThunk';
 
 const drawerWidth = 240;
 
