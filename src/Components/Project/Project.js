@@ -56,6 +56,7 @@ class Project extends Component {
         <ListItem button onClick={this.toggleDrawer}>
           <ListItemIcon>{<i className="material-icons">palette</i>}</ListItemIcon>
           <ListItemText inset primary={project.project_name} />
+          <ListItemIcon>{<i className="material-icons">delete</i>}</ListItemIcon>
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
