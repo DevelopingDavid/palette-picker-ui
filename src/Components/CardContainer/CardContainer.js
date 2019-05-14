@@ -62,11 +62,12 @@ export class CardContainer extends Component {
 
   createNewProject = async () => {
     const newProject = {
-      name: this.state.projectName,
-      palettes: this.props.currentPalette
+      project_name: this.state.projectName,
     }
-    await makeNewProjectThunk(newProject)
+    this.props.makeNewProjectThunk(newProject)
   }
+
+
 
 
   render() {
@@ -100,7 +101,7 @@ export class CardContainer extends Component {
           Save New Project
           </Button>
             <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              Please input the name of the Project you want to save.
           </Typography>
           </div>
         </Modal>
