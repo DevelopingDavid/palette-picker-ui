@@ -8,7 +8,7 @@ import Collapse from '@material-ui/core/Collapse';
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
 import shortid from 'shortid';
-import Palette from '../Palette/Palette';
+import Palette from '../../Containers/Palette/Palette';
 import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk';
 import { connect } from 'react-redux';
 
