@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ColorBox from '../ColorBox/ColorBox'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
@@ -72,14 +72,11 @@ export class CardContainer extends Component {
   }
 
   createNewProject = async () => {
-    //map over state.projects
-    //creates new project if projectName is not taken already 
     const { projects, makeNewProjectThunk } = this.props
     const newProject = {
       project_name: this.state.projectName,
     }
     const foundProject = projects.find(project => project.project_name === this.state.projectName)
-    console.log(foundProject)
     if (!foundProject) {
       this.setState({ invalidName: false })
       const id = await makeNewProjectThunk(newProject)
@@ -89,10 +86,24 @@ export class CardContainer extends Component {
     }
   }
 
+  saveToExistingProject = () => {
+    const id = this.state.selectedProjectId
+    const { currentPalette, fetchProjectsThunk, makeNewPaletteThunk } = this.props
+    const paletteWithId = {
+      project_id: id,
+      color_one: currentPalette[0].hex,
+      color_two: currentPalette[1].hex,
+      color_three: currentPalette[2].hex,
+      color_four: currentPalette[3].hex,
+      color_five: currentPalette[4].hex
+    }
+    makeNewPaletteThunk(paletteWithId)
+    fetchProjectsThunk()
+  }
+
   postPalette = async (id) => {
-    //save to existing project
     const { fetchProjectsThunk, makeNewPaletteThunk } = this.props
-    const projects = fetchProjectsThunk()
+    const projects = await fetchProjectsThunk()
     const foundId = await projects.find((project) => {
       return project.id === id.id
     })
@@ -121,7 +132,7 @@ export class CardContainer extends Component {
     })
 
     const displayMenuItems = this.props.projects.map(project => {
-      return <MenuItem value={project.id}>{project.project_name}</MenuItem>
+      return <MenuItem key={shortid.generate()} value={project.id}>{project.project_name}</MenuItem>
     })
 
     return (
@@ -151,7 +162,7 @@ export class CardContainer extends Component {
             <Typography variant="subtitle1" id="simple-modal-description">
               Please input the name of the Project you want to save.
             </Typography>
-            { this.state.invalidName ? "Sorry, that name is already in use. Please choose a new name" : undefined }
+            { this.state.invalidName ? <Typography variant="subtitle1" id="invalid-name">Sorry, that name is already in use. {<br />} Please choose a new name.</Typography> : undefined }
             <form className={classes.root} autoComplete="off">
               <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="age-simple">Select Existing Project</InputLabel>
@@ -160,6 +171,9 @@ export class CardContainer extends Component {
                   onChange={this.handleSelectChange} >
                   { displayMenuItems }
                 </Select>
+                <Button className='save-to-existing-project-btn' onClick={this.saveToExistingProject}>
+                  Save
+                </Button>
               </FormControl>
             </form>
           </div>
@@ -169,12 +183,12 @@ export class CardContainer extends Component {
   }
 }
 
-// CardContainer.propTypes = {
-//   makeNewProjectThunk: PropTypes.func.isRequired,
-//   currentPalette: PropTypes.array.isRequired,
-//   checkLockedColors: PropTypes.func.isRequired,
-//   projects: PropTypes.array
-// }
+CardContainer.propTypes = {
+  makeNewProjectThunk: PropTypes.func.isRequired,
+  currentPalette: PropTypes.array.isRequired,
+  checkLockedColors: PropTypes.func.isRequired,
+  projects: PropTypes.array
+}
 
 export const mapDispatchToProps = (dispatch) => ({
   makeNewProjectThunk: (project) => dispatch(makeNewProjectThunk(project)),
