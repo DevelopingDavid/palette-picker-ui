@@ -10,6 +10,8 @@ export const currentPaletteReducer = (state = [], action) => {
           return color
         }
       })
+    case 'DISPLAY_SAVED_PALETTE':
+      return action.palette
       
     default:
       return state

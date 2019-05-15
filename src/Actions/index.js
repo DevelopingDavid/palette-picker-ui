@@ -27,3 +27,8 @@ export const addProjects = (projects) => ({
   type: 'ADD_PROJECTS',
   projects
 })
+
+export const displaySavedPalette = (palette) => ({
+  type: 'DISPLAY_SAVED_PALETTE',
+  palette
+})
