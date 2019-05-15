@@ -1,27 +1,28 @@
 import React from 'react'
-import { ColorBox, mapStateToProps, mapDispatchToProps } from './ColorBox'
-import { toggleLocked } from '../../Actions'
-jest.mock('../../Actions')
+import { HeaderBar, mapStateToProps, mapDispatchToProps } from './HeaderBar'
+import { fetchProjectsThunk } from '../Thunks/fetchProjectsThunk'
+jest.mock('../Thunks/fetchProjectsThunk')
 
-describe('ColorBox', () => {
+describe('HeaderBar', () => {
   describe('mapStateToProps', () => {
     it('should mapStateToProps', () => {
       const mockState = {}
       const upDatedState = {
-        currentPalette: []
+        projects: []
       }
       const firstState = mapStateToProps(mockState)
       expect(firstState).toEqual({})
       const newState = mapStateToProps(upDatedState)
-      expect(newState).toEqual(upDatedState)
+      expect(upDatedState).toEqual(newState)
     })
+  })
 
-    it('should dispatch toggleLockInStore', () => {
+  describe.skip('mapDispatchToProps', () => {
+    it('should dispatch fetchProjectsThunk', () => {
       const mockDispatch = jest.fn()
-      const mockHex = '#fff'
-      const actionToDispatch = toggleLocked(mockHex)
+      const actionToDispatch = fetchProjectsThunk()
       const mappedProps = mapDispatchToProps(mockDispatch)
-      mappedProps.toggleLockInStore(mockHex)
+      mappedProps.fetchProjects()
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
   })
