@@ -11,6 +11,7 @@ import shortid from 'shortid';
 import Palette from '../../Containers/Palette/Palette';
 import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography'
 
 export class Project extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export class Project extends Component {
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
-          { palettes.length === 0 ? <p>This project is empty</p> : palettes.map((palette) => (
+          { palettes.length === 0 ? <Typography variant="subtitle1" id="empty-project" >This project is empty</Typography> : palettes.map((palette) => (
             <Palette key={shortid.generate()} palette={palette} fetchPalette={this.fetchPalette} />
           ))}
         </Collapse>
