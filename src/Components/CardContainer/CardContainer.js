@@ -160,10 +160,10 @@ export class CardContainer extends Component {
               Save New Project
             </Button>
             <Typography variant="subtitle1" id="simple-modal-description">
-              Please input the name of the Project you want to save.
+              or
             </Typography>
             { this.state.invalidName ? <Typography variant="subtitle1" id="invalid-name">Sorry, that name is already in use. {<br />} Please choose a new name.</Typography> : undefined }
-            <form className={classes.root} autoComplete="off">
+            <form className={classes.root} id='save-form' autoComplete="off">
               <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="age-simple">Select Existing Project</InputLabel>
                 <Select
