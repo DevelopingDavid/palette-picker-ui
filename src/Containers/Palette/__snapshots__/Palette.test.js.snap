@@ -1,5 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+
 exports[`Palette should match Snapshot 1`] = `
 <WithStyles(List)
   component="div"
@@ -101,3 +102,6 @@ exports[`Palette should match Snapshot 1`] = `
   <WithStyles(Divider) />
 </WithStyles(List)>
 `;
+
+exports[`Palette should match Snapshot 1`] = `ShallowWrapper {}`;
+
