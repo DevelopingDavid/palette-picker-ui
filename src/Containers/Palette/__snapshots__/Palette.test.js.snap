@@ -1,3 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+
+exports[`Palette should match Snapshot 1`] = `
+<WithStyles(List)
+  component="div"
+  disablePadding={true}
+>
+  <WithStyles(Divider) />
+  <WithStyles(ListItemIcon)>
+    <i
+      className="material-icons palette-icon"
+    >
+      style
+    </i>
+  </WithStyles(ListItemIcon)>
+  <div
+    className="sidebar-palette-container"
+    onClick={[Function]}
+  >
+    <WithStyles(ListItem)
+      className=""
+    >
+      <WithStyles(Avatar)
+        style={
+          Object {
+            "backgroundColor": "#00FF00",
+          }
+        }
+      />
+      <WithStyles(ListItemText)
+        primary="#00FF00"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      className=""
+    >
+      <WithStyles(Avatar)
+        style={
+          Object {
+            "backgroundColor": "#008000",
+          }
+        }
+      />
+      <WithStyles(ListItemText)
+        primary="#008000"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      className=""
+    >
+      <WithStyles(Avatar)
+        style={
+          Object {
+            "backgroundColor": "#00FFFF",
+          }
+        }
+      />
+      <WithStyles(ListItemText)
+        primary="#00FFFF"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      className=""
+    >
+      <WithStyles(Avatar)
+        style={
+          Object {
+            "backgroundColor": "#3374FF",
+          }
+        }
+      />
+      <WithStyles(ListItemText)
+        primary="#3374FF"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      className=""
+    >
+      <WithStyles(Avatar)
+        style={
+          Object {
+            "backgroundColor": "#FF335E",
+          }
+        }
+      />
+      <WithStyles(ListItemText)
+        primary="#FF335E"
+      />
+    </WithStyles(ListItem)>
+  </div>
+  <div
+    className="delete-container"
+  >
+    <WithStyles(Button)
+      onClick={[Function]}
+      variant="contained"
+    >
+      Delete palette
+    </WithStyles(Button)>
+  </div>
+  <WithStyles(Divider) />
+</WithStyles(List)>
+`;
+
 exports[`Palette should match Snapshot 1`] = `ShallowWrapper {}`;
+

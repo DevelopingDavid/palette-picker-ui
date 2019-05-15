@@ -1,6 +1,6 @@
 import { addProjects, isLoading, hasError } from '../Actions'
 
-const fetchProjectsThunk = () => {
+export const fetchProjectsThunk = () => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))

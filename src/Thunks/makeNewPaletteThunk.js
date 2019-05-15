@@ -1,6 +1,6 @@
 import { isLoading, hasError } from '../Actions'
 
-const makeNewPaletteThunk = (palette) => {
+export const makeNewPaletteThunk = (palette) => {
   return async (dispatch) => {
     const options = {
       method: 'POST',
