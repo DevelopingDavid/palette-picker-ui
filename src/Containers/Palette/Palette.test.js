@@ -1,6 +1,6 @@
 import React from 'react';
 import { Palette, mapDispatchToProps  } from './Palette';
-import { createShallow} from '@material-ui/core/test-utils';
+import { createShallow } from '@material-ui/core/test-utils';
 
 let mockPalette = {
   id: 72,

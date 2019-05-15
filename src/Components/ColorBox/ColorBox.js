@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-class ColorBox extends Component {
+export class ColorBox extends Component {
   constructor() {
     super() 
     this.state = {
