@@ -11,6 +11,7 @@ import shortid from 'shortid';
 import Palette from '../../Containers/Palette/Palette';
 import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography'
 
 export class Project extends Component {
   constructor(props) {
@@ -30,8 +31,10 @@ export class Project extends Component {
     const { project } = this.props;
     const id = project.id;
     const response = await fetch(`http://localhost:3001/api/v1/projects/${id}/palettes`);
-    const data = await response.json();
-    this.setState({ palettes: data });
+    if (response.ok) {
+      const data = await response.json();
+      this.setState({ palettes: data });
+    }
   }
 
   deleteProject = async () => {
@@ -44,16 +47,17 @@ export class Project extends Component {
 
   render() {
     const { project } = this.props;
+    const { palettes, open } = this.state;
     return (
       <div>
         <ListItem button onClick={this.toggleDrawer}>
           <ListItemIcon>{<i className="material-icons">palette</i>}</ListItemIcon>
           <ListItemText inset primary={project.project_name} />
           <ListItemIcon>{<i className="material-icons" onClick={this.deleteProject}>delete</i>}</ListItemIcon>
-          {this.state.open ? <ExpandLess /> : <ExpandMore />}
+          {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-          {this.state.palettes.map((palette) => (
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          { palettes.length === 0 ? <Typography variant="subtitle1" id="empty-project" >This project is empty</Typography> : palettes.map((palette) => (
             <Palette key={shortid.generate()} palette={palette} fetchPalette={this.fetchPalette} />
           ))}
         </Collapse>

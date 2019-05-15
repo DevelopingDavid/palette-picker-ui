@@ -2,9 +2,43 @@ import React from 'react';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { addPalette } from '../../Actions'
 jest.mock('../../Actions')
+import { createShallow } from '@material-ui/core/test-utils';
 
+const mockPalette = [
+  {
+    hex: "#ffff",
+    locked: false
+  },
+  {
+    hex: "#fff",
+    locked: false
+  }, {
+    hex: "#fffF68",
+    locked: false
+  }, {
+    hex: "#fff",
+    locked: false
+  }, {
+    hex: "#3C4F68",
+    locked: false
+  }
+]
 
 describe('App', () => {
+  let wrapper;
+  let shallow;
+
+  beforeEach(() => {
+    shallow = createShallow();
+    wrapper = shallow(
+      <App currentPalette={mockPalette} addPalette={jest.fn()} />
+      // <Project project={mockProject} fetchProjectsThunk={mockFunction} />
+    )
+  });
+  it('should match Snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   describe('mapStateToProps', () => {
     it('should mapStateToProps', () => {
       const mockState = {}
