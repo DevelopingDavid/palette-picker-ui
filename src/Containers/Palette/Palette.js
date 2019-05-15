@@ -16,7 +16,7 @@ const styles = theme => ({
   },
 });
 
-class Palette extends Component {
+export class Palette extends Component {
 
   deletePalette = async () => {
     const { id, project_id } = this.props.palette;
