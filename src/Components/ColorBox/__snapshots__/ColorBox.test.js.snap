@@ -1,3 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorBox should match Snapshot 1`] = `ShallowWrapper {}`;
+exports[`ColorBox should match Snapshot 1`] = `
+<WithStyles(Card)
+  className=" card"
+  onClick={[Function]}
+>
+  <WithStyles(CardContent)
+    className="color-container"
+    style={
+      Object {
+        "backgroundColor": "#FB5985",
+        "height": "12vw",
+      }
+    }
+  />
+  <i
+    className="material-icons lock-open"
+  >
+    lock_open
+  </i>
+  <WithStyles(Typography)
+    className="color-code"
+    color="inherit"
+    noWrap={true}
+    variant="h6"
+  >
+    #FB5985
+  </WithStyles(Typography)>
+</WithStyles(Card)>
+`;

@@ -1,3 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Project should match Snapshot 1`] = `ShallowWrapper {}`;
+exports[`Project should match Snapshot 1`] = `
+<div>
+  <WithStyles(ListItem)
+    button={true}
+    onClick={[Function]}
+  >
+    <WithStyles(ListItemIcon)>
+      <i
+        className="material-icons"
+      >
+        palette
+      </i>
+    </WithStyles(ListItemIcon)>
+    <WithStyles(ListItemText)
+      inset={true}
+      primary="Project 1"
+    />
+    <WithStyles(ListItemIcon)>
+      <i
+        className="material-icons"
+        onClick={[Function]}
+      >
+        delete
+      </i>
+    </WithStyles(ListItemIcon)>
+    <pure(ExpandMoreIcon) />
+  </WithStyles(ListItem)>
+  <WithStyles(Collapse)
+    in={false}
+    timeout="auto"
+    unmountOnExit={true}
+  />
+  <WithStyles(Divider) />
+</div>
+`;

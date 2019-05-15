@@ -16,7 +16,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.14"
-  },
+  },  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -51,7 +51,7 @@
       "src/**/*.{js,jsx}",
       "!src/serviceWorker.js",
       "!src/index.js",
-      "!src/reducers/index.js"
+      "!src/Reducers/index.js"
     ]
   }
 }
