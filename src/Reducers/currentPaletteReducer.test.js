@@ -15,8 +15,7 @@ describe('currentPaletteReducer', () => {
     expect(results).toEqual(mockDefaultState)
   })
 
-  it(
-    'should toggle a locked property to ONE index in an array of color objects if the action.type is TOGGLE_LOCKED and there is a match',
+  it('should toggle a locked property to ONE index in an array of color objects if the action.type is TOGGLE_LOCKED and there is a match',
     () => {
       const mockState = [
         {
