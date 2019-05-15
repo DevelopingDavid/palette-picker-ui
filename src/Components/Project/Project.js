@@ -12,7 +12,7 @@ import Palette from '../../Containers/Palette/Palette';
 import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk';
 import { connect } from 'react-redux';
 
-class Project extends Component {
+export class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,7 @@ class Project extends Component {
   deleteProject = async () => {
     const { project } = this.props;
     const id = project.id;
-    const options = {method: 'DELETE'}
+    const options = { method: 'DELETE' }
     await fetch(`http://localhost:3001/api/v1/projects/${id}`, options);
     this.props.fetchProjectsThunk();
   }
