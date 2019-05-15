@@ -31,7 +31,14 @@ exports[`Project should match Snapshot 1`] = `
     in={false}
     timeout="auto"
     unmountOnExit={true}
-  />
+  >
+    <WithStyles(Typography)
+      id="empty-project"
+      variant="subtitle1"
+    >
+      This project is empty
+    </WithStyles(Typography)>
+  </WithStyles(Collapse)>
   <WithStyles(Divider) />
 </div>
 `;
