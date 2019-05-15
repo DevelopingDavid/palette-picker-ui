@@ -40,7 +40,8 @@ export class CardContainer extends Component {
   state = {
     open: false,
     projectName: '',
-    selectedProjectId: ''
+    selectedProjectId: '',
+    invalidName: false
   };
 
   getModalStyle = () => {
@@ -71,12 +72,21 @@ export class CardContainer extends Component {
   }
 
   createNewProject = async () => {
-    //map over state.projects 
+    //map over state.projects
+    //creates new project if projectName is not taken already 
+    const { projects, makeNewProjectThunk } = this.props
     const newProject = {
       project_name: this.state.projectName,
     }
-    const id = await this.props.makeNewProjectThunk(newProject)
-    this.postPalette(id)
+    const foundProject = projects.find(project => project.project_name === this.state.projectName)
+    console.log(foundProject)
+    if (!foundProject) {
+      this.setState({ invalidName: false })
+      const id = await makeNewProjectThunk(newProject)
+      this.postPalette(id)
+    } else {
+      this.setState({ invalidName: true })
+    }
   }
 
   postPalette = async (id) => {
@@ -99,7 +109,7 @@ export class CardContainer extends Component {
     fetchProjectsThunk()
   }
 
-  handleChange = event => {
+  handleSelectChange = event => {
     this.setState({ selectedProjectId: event.target.value });
   };
 
@@ -141,12 +151,13 @@ export class CardContainer extends Component {
             <Typography variant="subtitle1" id="simple-modal-description">
               Please input the name of the Project you want to save.
             </Typography>
+            { this.state.invalidName ? "Sorry, that name is already in use. Please choose a new name" : undefined }
             <form className={classes.root} autoComplete="off">
               <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="age-simple">Select Existing Project</InputLabel>
                 <Select
                   value={this.state.selectedProjectId}
-                  onChange={this.handleChange} >
+                  onChange={this.handleSelectChange} >
                   { displayMenuItems }
                 </Select>
               </FormControl>
