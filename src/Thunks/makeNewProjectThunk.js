@@ -1,6 +1,6 @@
 import { makeNewProject, isLoading, hasError } from '../Actions'
 
-const makeNewProjectThunk = (project) => {
+export const makeNewProjectThunk = (project) => {
   return async (dispatch) => {
     const options = {
       method: "POST",
@@ -15,9 +15,9 @@ const makeNewProjectThunk = (project) => {
       if (!response.ok) {
         throw new Error(response.statusText)
       }
-      const project = await response.json()
+      const projectId = await response.json()
       dispatch(isLoading(false))
-      dispatch(makeNewProject(project))
+      dispatch(makeNewProject(projectId))
       return project
     } catch (error) {
       dispatch(hasError(error.message))

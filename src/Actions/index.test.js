@@ -1,8 +1,9 @@
 import * as actions from './index'
 
 describe('addPalette', () => {
-  it('should take in and return a palette if the action.type is ADD_PALETTE', () => {
-    const mockPalette = [
+  let mockPalette;
+  beforeEach(() => {
+    mockPalette = [
       {
         hex: "#C2CF2A",
         locked: false
@@ -21,6 +22,8 @@ describe('addPalette', () => {
         locked: false
       }
     ]
+  })
+  it('should take in and return a palette if the action.type is ADD_PALETTE', () => {
     const results = actions.addPalette(mockPalette)
     const expected = {
       type: "ADD_PALETTE",
@@ -87,13 +90,42 @@ describe('addPalette', () => {
     })
 
     describe('addProjects', () => {
-      const projects = []
-      const results = actions.addProjects(projects)
-      const expected = {
-        type: "ADD_PROJECTS",
-        projects
-      }
-      expect(results).toEqual(expected)
+      it('should take in and return a projects array if the action.type is ADD_PROJECTS', () => {
+        const projects = []
+        const results = actions.addProjects(projects)
+        const expected = {
+          type: "ADD_PROJECTS",
+          projects
+        }
+        expect(results).toEqual(expected)
+      })
+    })
+
+    describe('displaySavedPalette', () => {
+      it('should take in and return a palette if the action.type is DISPLAY_SAVED_PALETTE', () => {
+        const results = actions.displaySavedPalette(mockPalette)
+        const expected = {
+          type: "DISPLAY_SAVED_PALETTE",
+            palette: [{
+              hex: "#C2CF2A",
+              locked: false
+            },{
+              hex: "#C2CF2A",
+              locked: false
+            },{
+              hex: "#C2CF2A",
+              locked: false
+            },{
+              hex: "#C2CF2A",
+              locked: false
+            },{
+              hex: "#C2CF2A",
+              locked: false
+            }
+          ]
+        }
+        expect(results).toEqual(expected)
+      })
     })
   })
 })
