@@ -11,6 +11,7 @@ const fetchProjectsThunk = () => {
       const projects = await response.json()
       dispatch(isLoading(false))
       dispatch(addProjects(projects))
+      return projects
     } catch (error) {
       dispatch(hasError(error.message))
     }

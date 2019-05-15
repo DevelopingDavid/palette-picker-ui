@@ -10,6 +10,10 @@ import makeNewProjectThunk from '../../Thunks/makeNewProjectThunk'
 import makeNewPaletteThunk from '../../Thunks/makeNewPaletteThunk'
 import fetchProjectsThunk from '../../Thunks/fetchProjectsThunk'
 import shortid from 'shortid'
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
   paper: {
@@ -26,25 +30,30 @@ const styles = theme => ({
   input: {
     display: 'none',
   },
+  formControl: {
+    width: '60%'
+  }
 });
 
 export class CardContainer extends Component {
 
   state = {
     open: false,
-    projectName: ''
+    projectName: '',
+    selectedProjectId: '',
+    invalidName: false
   };
 
   getModalStyle = () => {
     const top = 50
     const left = 50
-   
+
     return {
       top: `${top}%`,
       left: `${left}%`,
       transform: `translate(-${top}%, -${left}%)`,
     };
-   }
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -63,33 +72,57 @@ export class CardContainer extends Component {
   }
 
   createNewProject = async () => {
+    const { projects, makeNewProjectThunk } = this.props
     const newProject = {
       project_name: this.state.projectName,
     }
-    const id = await this.props.makeNewProjectThunk(newProject)
-    this.postPalette(id)  
+    const foundProject = projects.find(project => project.project_name === this.state.projectName)
+    if (!foundProject) {
+      this.setState({ invalidName: false })
+      const id = await makeNewProjectThunk(newProject)
+      this.postPalette(id)
+    } else {
+      this.setState({ invalidName: true })
+    }
   }
 
-  postPalette = async (id) => {
-    const response = await fetch('http://localhost:3001/api/v1/projects')
-    const projects = await response.json()
-    const foundId = await projects.find( (project) => {
-      return project.id === id.id
-    })
-    const { currentPalette } = this.props
+  saveToExistingProject = () => {
+    const id = this.state.selectedProjectId
+    const { currentPalette, fetchProjectsThunk, makeNewPaletteThunk } = this.props
     const paletteWithId = {
-      project_id: foundId.id, 
+      project_id: id,
       color_one: currentPalette[0].hex,
       color_two: currentPalette[1].hex,
       color_three: currentPalette[2].hex,
       color_four: currentPalette[3].hex,
       color_five: currentPalette[4].hex
     }
-    this.props.makeNewPaletteThunk(paletteWithId)
-    this.props.fetchProjectsThunk()
+    makeNewPaletteThunk(paletteWithId)
+    fetchProjectsThunk()
   }
 
+  postPalette = async (id) => {
+    const { fetchProjectsThunk, makeNewPaletteThunk } = this.props
+    const projects = await fetchProjectsThunk()
+    const foundId = await projects.find((project) => {
+      return project.id === id.id
+    })
+    const { currentPalette } = this.props
+    const paletteWithId = {
+      project_id: foundId.id,
+      color_one: currentPalette[0].hex,
+      color_two: currentPalette[1].hex,
+      color_three: currentPalette[2].hex,
+      color_four: currentPalette[3].hex,
+      color_five: currentPalette[4].hex
+    }
+    makeNewPaletteThunk(paletteWithId)
+    fetchProjectsThunk()
+  }
 
+  handleSelectChange = event => {
+    this.setState({ selectedProjectId: event.target.value });
+  };
 
   render() {
     const { classes } = this.props;
@@ -98,10 +131,15 @@ export class CardContainer extends Component {
       return <ColorBox colorObject={color} key={shortid.generate()} />
     })
 
+    const displayMenuItems = this.props.projects.map(project => {
+      return <MenuItem key={shortid.generate()} value={project.id}>{project.project_name}</MenuItem>
+    })
+
     return (
       <div className='container'>
+
         <div className='cards-container'>
-          { makeCards }
+          {makeCards}
         </div>
         <div className='buttons-container'>
           <Button variant="contained" color="primary" className={classes.button} onClick={this.props.checkLockedColors}>Generate New Colors</Button>
@@ -116,14 +154,28 @@ export class CardContainer extends Component {
           <div style={this.getModalStyle()} className={classes.paper}>
             <Typography variant="h6" id="modal-title">
               Save New Project
-          </Typography>
-          <input name='projectName' value={this.state.projectName} onChange={this.handleChange} />
-          <Button className='save-new-project-btn' onClick={this.createNewProject}>
-          Save New Project
-          </Button>
+            </Typography>
+            <input name='projectName' value={this.state.projectName} onChange={this.handleChange} />
+            <Button className='save-new-project-btn' onClick={this.createNewProject}>
+              Save New Project
+            </Button>
             <Typography variant="subtitle1" id="simple-modal-description">
               Please input the name of the Project you want to save.
-          </Typography>
+            </Typography>
+            { this.state.invalidName ? <Typography variant="subtitle1" id="invalid-name">Sorry, that name is already in use. {<br />} Please choose a new name.</Typography> : undefined }
+            <form className={classes.root} autoComplete="off">
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="age-simple">Select Existing Project</InputLabel>
+                <Select
+                  value={this.state.selectedProjectId}
+                  onChange={this.handleSelectChange} >
+                  { displayMenuItems }
+                </Select>
+                <Button className='save-to-existing-project-btn' onClick={this.saveToExistingProject}>
+                  Save
+                </Button>
+              </FormControl>
+            </form>
           </div>
         </Modal>
       </div>
@@ -145,7 +197,8 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export const mapStateToProps = state => ({
-  currentPalette: state.currentPalette
+  currentPalette: state.currentPalette,
+  projects: state.projects
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CardContainer));
