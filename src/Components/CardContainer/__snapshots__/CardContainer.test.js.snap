@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardContainer should match snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="cards-container"
+  >
+    <ConnectFunction
+      colorObject={
+        Object {
+          "hex": "#FB5985",
+          "locked": false,
+        }
+      }
+      key="f2IfWUgvt"
+    />
+    <ConnectFunction
+      colorObject={
+        Object {
+          "hex": "#FFFFFF",
+          "locked": false,
+        }
+      }
+      key="0Bu6JVet2z"
+    />
+    <ConnectFunction
+      colorObject={
+        Object {
+          "hex": "#FFFFFF",
+          "locked": false,
+        }
+      }
+      key="lhbF9cPCGz"
+    />
+    <ConnectFunction
+      colorObject={
+        Object {
+          "hex": "#FFFFFF",
+          "locked": false,
+        }
+      }
+      key="qqq8Asyyom"
+    />
+    <ConnectFunction
+      colorObject={
+        Object {
+          "hex": "#FFFFFF",
+          "locked": false,
+        }
+      }
+      key="5ZIbkEWTxB"
+    />
+  </div>
+  <div
+    className="buttons-container"
+  >
+    <WithStyles(Button)
+      className=""
+      color="primary"
+      variant="contained"
+    >
+      Generate New Colors
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      className=""
+      color="secondary"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Save Palette
+    </WithStyles(Button)>
+  </div>
+  <WithStyles(Modal)
+    aria-describedby="simple-modal-description"
+    aria-labelledby="simple-modal-title"
+    onClose={[Function]}
+    open={false}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "left": "50%",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+        }
+      }
+    >
+      <WithStyles(Typography)
+        id="modal-title"
+        variant="h6"
+      >
+        Save New Project
+      </WithStyles(Typography)>
+      <input
+        name="projectName"
+        onChange={[Function]}
+        value=""
+      />
+      <WithStyles(Button)
+        className="save-new-project-btn"
+        onClick={[Function]}
+      >
+        Save New Project
+      </WithStyles(Button)>
+      <WithStyles(Typography)
+        id="simple-modal-description"
+        variant="subtitle1"
+      >
+        Please input the name of the Project you want to save.
+      </WithStyles(Typography)>
+      <form
+        autoComplete="off"
+        className=""
+      >
+        <WithStyles(FormControl)
+          className=""
+        >
+          <WithStyles(WithFormControlContext(InputLabel))
+            htmlFor="age-simple"
+          >
+            Select Existing Project
+          </WithStyles(WithFormControlContext(InputLabel))>
+          <WithStyles(WithFormControlContext(Select))
+            onChange={[Function]}
+            value=""
+          >
+            <WithStyles(MenuItem)
+              key="WReZ0oAx-E"
+              value={50}
+            >
+              My Project
+            </WithStyles(MenuItem)>
+          </WithStyles(WithFormControlContext(Select))>
+          <WithStyles(Button)
+            className="save-to-existing-project-btn"
+            onClick={[Function]}
+          >
+            Save
+          </WithStyles(Button)>
+        </WithStyles(FormControl)>
+      </form>
+    </div>
+  </WithStyles(Modal)>
+</div>
+`;

@@ -18,7 +18,7 @@ export const makeNewProjectThunk = (project) => {
       const projectId = await response.json()
       dispatch(isLoading(false))
       dispatch(makeNewProject(projectId))
-      return project
+      return projectId
     } catch (error) {
       dispatch(hasError(error.message))
     }
