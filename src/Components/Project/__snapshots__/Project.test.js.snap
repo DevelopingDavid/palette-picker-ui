@@ -31,7 +31,6 @@ exports[`Project should match Snapshot 1`] = `
     in={false}
     timeout="auto"
     unmountOnExit={true}
-  />
   >
     <WithStyles(Typography)
       id="empty-project"
