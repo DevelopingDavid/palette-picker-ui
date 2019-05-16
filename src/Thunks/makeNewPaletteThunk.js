@@ -11,7 +11,7 @@ export const makeNewPaletteThunk = (palette) => {
     }
     try {
       dispatch(isLoading(true))
-      const response = await fetch(`${REACT_APP_BACKEND_URL}/api/v1/projects/${palette.project_id}/palettes`, options)
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/projects/${palette.project_id}/palettes`, options)
       if (!response.ok) {
         throw new Error(response.statusText)
       }
