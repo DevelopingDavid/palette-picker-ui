@@ -21,7 +21,7 @@ export class Palette extends Component {
   deletePalette = async () => {
     const { id, project_id } = this.props.palette;
     const options = {method: 'DELETE'}
-    await fetch(`http://localhost:3001/api/v1/projects/${project_id}/palettes/${id}`, options);
+    await fetch(`${REACT_APP_BACKEND_URL}/api/v1/projects/${project_id}/palettes/${id}`, options);
     await this.props.fetchPalette()
   }
 

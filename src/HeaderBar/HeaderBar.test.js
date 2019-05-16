@@ -1,7 +1,10 @@
 import React from 'react'
 import { HeaderBar, mapStateToProps, mapDispatchToProps } from './HeaderBar'
+import { createShallow } from '@material-ui/core/test-utils'
 import { fetchProjectsThunk } from '../Thunks/fetchProjectsThunk'
 jest.mock('../Thunks/fetchProjectsThunk')
+
+
 
 describe('HeaderBar', () => {
   describe('mapStateToProps', () => {
@@ -17,7 +20,7 @@ describe('HeaderBar', () => {
     })
   })
 
-  describe.skip('mapDispatchToProps', () => {
+  describe('mapDispatchToProps', () => {
     it('should dispatch fetchProjectsThunk', () => {
       const mockDispatch = jest.fn()
       const actionToDispatch = fetchProjectsThunk()
