@@ -4,7 +4,7 @@ export const fetchProjectsThunk = () => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))
-      const response = await fetch('http://localhost:3001/api/v1/projects')
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/projects`)
       if (!response.ok) {
         throw new Error(response.statusText)
       }

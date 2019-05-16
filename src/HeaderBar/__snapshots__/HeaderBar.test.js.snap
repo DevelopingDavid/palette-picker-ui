@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`HeaderBar Should match snapshot 1`] = `
 <div
   className=""
@@ -66,3 +64,4 @@ exports[`HeaderBar Should match snapshot 1`] = `
   </main>
 </div>
 `;
+
