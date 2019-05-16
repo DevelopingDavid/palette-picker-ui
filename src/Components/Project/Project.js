@@ -30,7 +30,7 @@ export class Project extends Component {
   fetchPalette = async () => {
     const { project } = this.props;
     const id = project.id;
-    const response = await fetch(`${REACT_APP_BACKEND_URL}/api/v1/projects/${id}/palettes`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/projects/${id}/palettes`);
     if (response.ok) {
       const data = await response.json();
       this.setState({ palettes: data });
@@ -41,7 +41,7 @@ export class Project extends Component {
     const { project } = this.props;
     const id = project.id;
     const options = { method: 'DELETE' }
-    await fetch(`${REACT_APP_BACKEND_URL}/api/v1/projects/${id}`, options);
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/projects/${id}`, options);
     this.props.fetchProjectsThunk();
   }
 

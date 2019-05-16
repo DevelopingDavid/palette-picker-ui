@@ -11,7 +11,7 @@ export const makeNewProjectThunk = (project) => {
     }
     try {
       dispatch(isLoading(true))
-      const response = await fetch(`${REACT_APP_BACKEND_URL}/api/v1/projects`, options)
+      const response = await `${process.env.REACT_APP_BACKEND_URL}/api/v1/projects`, options)
       if (!response.ok) {
         throw new Error(response.statusText)
       }
