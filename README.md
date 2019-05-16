@@ -53,5 +53,5 @@
 
 ## Contributors
 [Eric Fitzsimons](https://github.com/ericfitzsimons451) \
-[Gabe Inzurriaga](https://github.com/inzurriaga) \
-[Tom Wilhoit](https://github.com/tomwilhoit)
+[Justin Torrance](https://github.com/justintorrance) \
+[David Cisneros](https://github.com/developingdavid)
