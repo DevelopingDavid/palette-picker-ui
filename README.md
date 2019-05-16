@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Palette Picker
+### A web-based application for generating random color palettes.
 
-In the project directory, you can run:
+## NOTE: This is only the front-end repository for this application.  To clone the back-end repository, please visit: 
+## https://github.com/ericfitzsimons451/Palette-Picker-API
 
-### `npm start`
+## Installation Steps
+```git clone https://github.com/DevelopingDavid/palette-picker-ui.git```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```npm install```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```npm start```
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Background/About
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### This project tasked our 3 person team to build a full-stack application in 10 days. We set-up a Postgres database and used Knex to create our tables, migrate, and seed our data into multiple environments: development, production, CI, and testing.  Our team enjoyed developing our understanding of the request/response cycle, backend testing, and what goes into building out a robust back-end.  
+### For the front-end we chose to work with Material-UI, despite it not being in the project spec, as a way of challenging ourselves to work with some form of new technology.  Pre-styled components come with their own challenges, but maintaining a healthy interest in using new technology is an important skill to have at one's fingertips.
+### This project also saw us implementing co-authored commits in our pull requests when we were coding as a group.  When separated, we were diligent abouut keeping each other abreast of changes made through PRs on Github and rebasing our local code.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Material-UI
+- React JS
+- Redux
+- Redux Thunk
+- Node.js
+- Express
+- Knex
+- PostgresQL
+- Jest/Enzyme/Supertest
+- Sass
+- Travis-CI
 
-### `npm run eject`
+## Future Iterations
+- Add ability to use query params
+- Add Sign-in
+- Incorporate OAuth 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Screenshots
+### Home View
+<img width="1179" alt="Screen Shot 2019-05-15 at 7 41 25 PM" src="https://user-images.githubusercontent.com/39415039/57820488-3d39e380-774a-11e9-9118-64fe97418343.png">
+### Save Project View
+<img width="1166" alt="Screen Shot 2019-05-15 at 7 42 34 PM" src="https://user-images.githubusercontent.com/39415039/57820508-55a9fe00-774a-11e9-9a66-b701f2e4fd44.png">
+### Save Existing Project Dropdown View
+<img width="1159" alt="Screen Shot 2019-05-15 at 7 42 42 PM" src="https://user-images.githubusercontent.com/39415039/57820516-5e023900-774a-11e9-8af1-ee806d6efa41.png">
+### Drawer Open View
+<img width="1185" alt="Screen Shot 2019-05-15 at 7 42 53 PM" src="https://user-images.githubusercontent.com/39415039/57820521-635f8380-774a-11e9-896c-d520373c9e05.png">
+### Drawer Open & Display Palette View
+<img width="1198" alt="Screen Shot 2019-05-15 at 7 44 47 PM" src="https://user-images.githubusercontent.com/39415039/57820531-6fe3dc00-774a-11e9-952b-641bf02b47f2.png">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contributors
+[Eric Fitzsimons](https://github.com/ericfitzsimons451) \
+[Gabe Inzurriaga](https://github.com/inzurriaga) \
+[Tom Wilhoit](https://github.com/tomwilhoit)
