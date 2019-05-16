@@ -76,7 +76,7 @@ const styles = theme => ({
   },
 });
 
-class HeaderBar extends React.Component {
+export class HeaderBar extends React.Component {
   state = {
     open: false
   };

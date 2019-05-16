@@ -35,8 +35,16 @@ describe('App', () => {
       // <Project project={mockProject} fetchProjectsThunk={mockFunction} />
     )
   });
+
   it('should match Snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should call upon checkLockedColors on componentDidMount', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'checkLockedColors');
+    instance.componentDidMount();
+    expect(instance.checkLockedColors).toHaveBeenCalled();
   });
 
   describe('mapStateToProps', () => {

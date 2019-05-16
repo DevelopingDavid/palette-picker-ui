@@ -1,3 +1,67 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+exports[`HeaderBar Should match snapshot 1`] = `
+<div
+  className=""
+>
+  <WithStyles(CssBaseline) />
+  <WithStyles(AppBar)
+    className=""
+    position="fixed"
+  >
+    <WithStyles(Toolbar)
+      disableGutters={true}
+    >
+      <WithStyles(IconButton)
+        aria-label="Open drawer"
+        className=""
+        color="inherit"
+        onClick={[Function]}
+      >
+        <pure(MenuIcon) />
+      </WithStyles(IconButton)>
+      <WithStyles(Typography)
+        color="inherit"
+        noWrap={true}
+        variant="h6"
+      >
+        Palette Picker
+      </WithStyles(Typography)>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+  <WithStyles(Drawer)
+    anchor="left"
+    classes={
+      Object {
+        "paper": undefined,
+      }
+    }
+    open={false}
+    variant="persistent"
+  >
+    <div>
+      <WithStyles(IconButton)
+        onClick={[Function]}
+      >
+        <pure(ChevronRightIcon) />
+      </WithStyles(IconButton)>
+    </div>
+    <WithStyles(Divider) />
+    <WithStyles(List)>
+      <ConnectFunction
+        key="50"
+        project={
+          Object {
+            "id": 50,
+            "project_name": "My Project",
+          }
+        }
+      />
+    </WithStyles(List)>
+  </WithStyles(Drawer)>
+  <main
+    className=""
+  >
+    <div />
+  </main>
+</div>
+`;
 
-exports[`HeaderBar should match the snapshot 1`] = `undefined`;
