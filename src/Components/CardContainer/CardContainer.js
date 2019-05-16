@@ -130,7 +130,7 @@ export class CardContainer extends Component {
     const makeCards = currentPalette.map(color => {
       return <ColorBox colorObject={color} key={shortid.generate()} />
     })
-
+    
     const displayMenuItems = this.props.projects.map(project => {
       return <MenuItem key={shortid.generate()} value={project.id}>{project.project_name}</MenuItem>
     })
